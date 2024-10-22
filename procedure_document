@@ -1,0 +1,16 @@
+1. #####Run Jenkins on Docker######
+
+Created Dockerfile for this which is using jenkins latest image and exposed to 8080 port, additionally installed docker into it so that it can build images and run containers.
+
+2. ##########  Created an Dockerfile for flask App ##############
+
+Created an Dockerfile which is using python image and we have added COPY statement so that we have all required application specific files in place and at last we just ran app.py using python under CMD statement.
+
+3. #########  Created docker compose file ###########
+  This we created so that we can orchestrate docker container, when we run this docker compose file first it will build the dockefile after that it launch the container as well, and this will be accessible on port 5000
+  
+4. #### Jenkins Pipeline ###########
+ I have created jenkins pipeline which is having simply 2 stage the first one is to checkout the code which will pull the app code from remote repo and second step would be running the docker compose file, to create versioning i have created environment varibale whwre we have to specify the version number that we want accordingly docker compose will create imsage with that version tag.
+ If we want to make version number more dynamic then we have option to jenkins parameter where on every run we can manually enter the required version number OR wa can simply use BUILD_NUMBER which is jenkins default env varivale do dynamically assign the image tag.
+
+

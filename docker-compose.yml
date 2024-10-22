@@ -1,4 +1,10 @@
 # Implement this configuration file
-services:
-  web:
-    # ...
+services: 
+  wizards-almanac:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wizards-almanac:${VERSION}  
+    ports:
+      - "5000:5000"
+

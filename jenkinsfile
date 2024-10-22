@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    
+    environment {
+        VERSION = "1.0.0"
+    }
+    stages {
+        stage('Checkout code') {
+            steps {
+                git credentialsId: frauscher_repo_cred, url: 'http://frauscher-sen-rtihwh@git.codesubmit.io/frauscher-sensortechnik/devops-nipzpl.git'
+            }
+            
+        }
+        
+        stage('Build and Deploy') {
+            steps {
+                script {
+		    sh 'echo "VERSION=${VERSION}" > .env'
+                    sh 'docker-compose up --build -d'
+                }
+            }
+        }
+    }
+}
