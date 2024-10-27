@@ -7,7 +7,7 @@ pipeline{
     stages {
         stage('Checkout code') {
             steps {
-                git credentialsId: frauscher_repo_cred, url: 'http://frauscher-sen-rtihwh@git.codesubmit.io/frauscher-sensortechnik/devops-nipzpl.git'
+                git branch: 'main', url: 'https://github.com/saurabhefm/flask-app.git'
             }
             
         }
@@ -15,8 +15,8 @@ pipeline{
         stage('Build and Deploy') {
             steps {
                 script {
-		    sh 'echo "VERSION=${VERSION}" > .env'
-                    sh 'docker-compose up --build -d'
+		    sh "echo 'VERSION=${VERSION}' > .env"
+                    sh 'docker-compose --env-file .env up --build -d'
                 }
             }
         }
