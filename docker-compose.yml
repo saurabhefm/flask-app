@@ -6,5 +6,5 @@ services:
       dockerfile: Dockerfile
     image: wizards-almanac:${VERSION}  
     ports:
-      - "5000:5000"
+      - "5001:5001"
 
