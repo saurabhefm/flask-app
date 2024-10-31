@@ -15,8 +15,10 @@ pipeline{
         stage('Build and Deploy') {
             steps {
                 script {
-                    sh "echo 'VERSION=${VERSION}' > .env"
-                    sh 'docker-compose --env-file .env up --build -d'
+                    //sh "echo 'VERSION=${VERSION}' > .env"
+                    //sh 'docker-compose --env-file .env up --build -d'
+                     bat "echo VERSION=${VERSION} > .env"
+                     bat 'docker-compose --env-file .env up --build -d'
                 }
             }
         }
